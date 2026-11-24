@@ -25,7 +25,7 @@ LingASR Preview is distributed as a precompiled SDK with INT8 deployment resourc
 
 Use an ESP32-S3 N16R8, an INMP441 microphone, a MAX98357A amplifier and a speaker. The complete assistant also uses an ST7789 240×240 LCD and a WS2812 RGB LED by default. See [hardware and wiring](docs/HARDWARE.md).
 
-1. Download `lingasr-preview-assistant-0.1.0-preview.1-n16r8.tar.gz` from [Releases](https://github.com/LingCoreX-AI/LingASR/releases) and extract it.
+1. Download `lingasr-preview-assistant-0.1.0-preview.2-n16r8.tar.gz` from [Releases](https://github.com/LingCoreX-AI/LingASR/releases) and extract it.
 2. Flash the board:
 
    ```bash
@@ -50,7 +50,7 @@ After cloning, use Python 3.12+ to download the pinned SDK and verify its SHA-25
 python tools/get-sdk.py
 ```
 
-Alternatively, download and extract `lingasr-preview-sdk-0.1.0-preview.1.tar.gz` from [Releases](https://github.com/LingCoreX-AI/LingASR/releases). It already contains the required components and resources.
+Alternatively, download and extract `lingasr-preview-sdk-0.1.0-preview.2.tar.gz` from [Releases](https://github.com/LingCoreX-AI/LingASR/releases). It already contains the required components and resources.
 
 With **ESP-IDF v5.5.6** configured, build the offline microphone example:
 
@@ -61,7 +61,7 @@ idf.py -C examples/microphone -B build/microphone -p COM5 flash monitor
 
 This example needs no Wi-Fi, LLM or TTS. After microphone warm-up, press BOOT to record four seconds and print the transcript over UART. The full assistant is in `examples/voice_assistant`; its GPIO settings are available through `idf.py menuconfig`. On Linux / WSL, replace COM5 with the actual device, such as `/dev/ttyUSB0`.
 
-Applications create an engine with `lingasr_create()` and pass PCM to `lingasr_transcribe()` to receive UTF-8 text. Task-stack requirements, resource partitions, cancellation and error codes are documented in the [API reference](docs/API.md).
+Applications create an engine with `lingasr_create()` and pass PCM to `lingasr_transcribe()` to receive UTF-8 text. The API supports single-core or dual-core inference, configurable built-in VAD and external speech decisions. Usage, task-stack requirements, resource partitions, cancellation and error codes are documented in the [API reference](docs/API.md).
 
 ## Voice assistant
 

@@ -25,7 +25,7 @@ LingASR Preview 通过预编译 SDK 和 INT8 部署资源分发。个人非商�
 
 需要 ESP32-S3 N16R8 开发板、INMP441 麦克风、MAX98357A 功放和喇叭。完整助手默认接有 ST7789 240×240 LCD 及 WS2812 RGB，接线见[硬件说明](docs/HARDWARE.md)。
 
-1. 从 [Releases](https://github.com/LingCoreX-AI/LingASR/releases) 下载 `lingasr-preview-assistant-0.1.0-preview.1-n16r8.tar.gz` 并解压。
+1. 从 [Releases](https://github.com/LingCoreX-AI/LingASR/releases) 下载 `lingasr-preview-assistant-0.1.0-preview.2-n16r8.tar.gz` 并解压。
 2. 烧录：
 
    ```bash
@@ -50,7 +50,7 @@ LingASR Preview 通过预编译 SDK 和 INT8 部署资源分发。个人非商�
 python tools/get-sdk.py
 ```
 
-也可从 [Releases](https://github.com/LingCoreX-AI/LingASR/releases) 手动下载 `lingasr-preview-sdk-0.1.0-preview.1.tar.gz` 并解压；SDK 包已包含组件和资源，可直接构建。
+也可从 [Releases](https://github.com/LingCoreX-AI/LingASR/releases) 手动下载 `lingasr-preview-sdk-0.1.0-preview.2.tar.gz` 并解压；SDK 包已包含组件和资源，可直接构建。
 
 配置好 ESP-IDF **v5.5.6** 环境后，先编译离线麦克风示例：
 
@@ -61,7 +61,7 @@ idf.py -C examples/microphone -B build/microphone -p COM5 flash monitor
 
 这个示例无需 Wi-Fi、LLM 或 TTS。麦克风预热完成后，短按 BOOT 录制四秒，识别结果显示在串口。完整助手使用 `examples/voice_assistant`，GPIO 可通过 `idf.py menuconfig` 调整。Linux / WSL 把串口替换成 `/dev/ttyUSB0` 等实际设备。
 
-自有应用通过 `lingasr_create()` 创建引擎，调用 `lingasr_transcribe()` 输入 PCM、读取 UTF-8 转写文字。识别任务栈、资源分区、取消和错误码见 [API 参考](docs/API.md)。
+自有应用通过 `lingasr_create()` 创建引擎，调用 `lingasr_transcribe()` 输入 PCM、读取 UTF-8 转写文字。API 支持单核／双核推理、内置 VAD 参数配置，以及外部人声判定输入。用法、识别任务栈、资源分区、取消和错误码见 [API 参考](docs/API.md)。
 
 ## 语音助手
 

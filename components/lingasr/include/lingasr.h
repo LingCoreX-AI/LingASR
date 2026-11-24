@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-#define LINGASR_VERSION "0.1.0-preview.1"
+#define LINGASR_VERSION "0.1.0-preview.2"
 #define LINGASR_ABI_VERSION 1
 #define LINGASR_SAMPLE_RATE 16000
 #define LINGASR_MAX_SAMPLES 128000
@@ -24,6 +24,9 @@ typedef struct {
     const char *tokens_partition;
     const char *decoder_partition;
 } lingasr_config_t;
+typedef enum {
+    LINGASR_SINGLE_CORE=1, LINGASR_DUAL_CORE=2
+} lingasr_execution_mode_t;
 typedef struct {
     const int16_t *pcm;
     size_t samples;
@@ -43,6 +46,15 @@ const char *lingasr_version(void);
 void lingasr_default_config(lingasr_config_t *config);
 /* One engine per process. Requires ESP32-S3 + octal PSRAM; resources are hash-verified. */
 lingasr_status_t lingasr_create(const lingasr_config_t *config,lingasr_engine_t **engine);
+/* create() defaults to DUAL_CORE. SINGLE_CORE avoids allocating the math worker.
+ * This controls ASR compute only. In dual mode pin the calling task to core 1;
+ * the helper runs on core 0. Single mode runs entirely on the calling task. */
+lingasr_status_t lingasr_create_ex(const lingasr_config_t *config,
+                                  lingasr_execution_mode_t mode,lingasr_engine_t **engine);
+/* Change only while idle; returns BUSY during inference. A failed switch leaves
+ * the previous mode usable. Switching does not change caller task affinity. */
+lingasr_status_t lingasr_set_execution(lingasr_engine_t *engine,lingasr_execution_mode_t mode);
+lingasr_status_t lingasr_get_execution(lingasr_engine_t *engine,lingasr_execution_mode_t *mode);
 /* Blocking batch inference; call from a >=20KiB task stack. PCM is copied before padding.
  * Concurrent inference returns BUSY. Cancel callback must be short and nonblocking.
  * A full 1024-byte text buffer is required, avoiding silent truncation of final output. */

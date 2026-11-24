@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """MIT. Install the version-pinned release SDK components and assets (Python 3.12+)."""
 import argparse,hashlib,pathlib,re,shutil,tarfile,tempfile,urllib.request
-VERSION='0.1.0-preview.1'
+VERSION='0.1.0-preview.2'
 REPOSITORY='LingCoreX-AI/LingASR'
 NAME=f'lingasr-preview-sdk-{VERSION}'
 
