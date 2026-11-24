@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+set(PROJECT_VER "0.1.0-preview.1")
+set(EXTRA_COMPONENT_DIRS "${CMAKE_CURRENT_LIST_DIR}/../../components/lingasr")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(lingasr_microphone)
+lingasr_flash_assets("${CMAKE_CURRENT_LIST_DIR}/../../assets/asr")

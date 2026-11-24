@@ -1,0 +1,6 @@
+function(lingasr_flash_assets dir)
+    esptool_py_flash_to_partition(flash asr_model "${dir}/model.bin")
+    esptool_py_flash_to_partition(flash asr_front "${dir}/frontend.bin")
+    esptool_py_flash_to_partition(flash asr_tokens "${dir}/tokens.bin")
+    esptool_py_flash_to_partition(flash asr_backend "${dir}/decoder.bin")
+endfunction()

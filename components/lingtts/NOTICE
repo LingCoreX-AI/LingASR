@@ -1,0 +1,16 @@
+LingTTS SDK
+===========
+
+liblingtts.a 包含以下第三方开源代码（静态链接，内部符号已隐藏）。各自的许可证全文在 licenses/ 目录。
+
+1. esp-nn v1.4.1（Espressif Systems）
+   https://github.com/espressif/esp-nn ，commit f1bfc45cb0edfdbe8fd4871f3abc0adfc7fe1c47
+   许可证：Apache License 2.0（licenses/esp-nn-LICENSE.txt）。未修改源代码，只去掉了测试。
+
+2. KISS FFT（Copyright (c) 2003-2010 Mark Borgerding）
+   https://github.com/mborgerding/kissfft ，commit 45b3ad4c0830abae6b2ea857864fe60a676dd896
+   许可证：BSD-3-Clause（licenses/kissfft-COPYING.txt、licenses/kissfft-BSD-3-Clause.txt）。
+
+3. micro-ecc（Copyright (c) 2014, Kenneth MacKay）
+   https://github.com/kmackay/micro-ecc ，commit 541b3a78026420a3e369c4c9281c396b5e531113
+   许可证：BSD-2-Clause（licenses/micro-ecc-LICENSE.txt）。只用于校验授权签名，未修改。

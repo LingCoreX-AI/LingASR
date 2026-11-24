@@ -1,0 +1,103 @@
+menu "LingASR assistant hardware"
+config ASR_BUTTON_GPIO
+    int "BOOT button GPIO (active low, internal pull-up)"
+    range 0 48
+    default 0
+config ASR_SPEAKER_BCLK
+    int "Unused speaker BCLK GPIO (held low)"
+    range 0 48
+    default 15
+config ASR_SPEAKER_WS
+    int "Unused speaker LRCK GPIO (held low)"
+    range 0 48
+    default 16
+config ASR_SPEAKER_DOUT
+    int "Unused speaker DATA GPIO (held low)"
+    range 0 48
+    default 7
+config ASR_MIC_BCLK
+    int "Microphone BCLK GPIO"
+    range 0 48
+    default 5
+config ASR_MIC_WS
+    int "Microphone WS GPIO"
+    range 0 48
+    default 4
+config ASR_MIC_DIN
+    int "Microphone data GPIO"
+    range 0 48
+    default 6
+config ASR_LCD_ENABLE
+    bool "Enable ST7789 240x240 LCD"
+    default y
+if ASR_LCD_ENABLE
+config ASR_LCD_SCLK
+    int "LCD SCL / SPI SCLK GPIO"
+    range 0 48
+    default 21
+config ASR_LCD_MOSI
+    int "LCD SDA / SPI MOSI GPIO"
+    range 0 48
+    default 47
+config ASR_LCD_RST
+    int "LCD RES GPIO"
+    range 0 48
+    default 45
+config ASR_LCD_DC
+    int "LCD DC GPIO"
+    range 0 48
+    default 40
+config ASR_LCD_CS
+    int "LCD CS GPIO"
+    range 0 48
+    default 41
+config ASR_LCD_BL
+    int "LCD BLK GPIO"
+    range 0 48
+    default 42
+config ASR_LCD_BL_LEVEL
+    int "Backlight on level (0=low, 1=high)"
+    range 0 1
+    default 1
+config ASR_LCD_INVERT_LEVEL
+    int "Panel color inversion (0=off, 1=on)"
+    range 0 1
+    default 1
+config ASR_LCD_SWAP_LEVEL
+    int "Swap panel X/Y (0=off, 1=on)"
+    range 0 1
+    default 0
+config ASR_LCD_MIRROR_X_LEVEL
+    int "Mirror X (0=off, 1=on)"
+    range 0 1
+    default 0
+config ASR_LCD_MIRROR_Y_LEVEL
+    int "Mirror Y (0=off, 1=on)"
+    range 0 1
+    default 0
+config ASR_LCD_X_GAP
+    int "Panel X offset"
+    range 0 80
+    default 0
+config ASR_LCD_Y_GAP
+    int "Panel Y offset"
+    range 0 80
+    default 0
+config ASR_LCD_BGR
+    bool "BGR color order (instead of RGB)"
+    default n
+endif
+endmenu
+
+menu "Assistant settings"
+config ASSISTANT_SPEAKER_VOLUME
+    int "Speaker volume percent"
+    range 0 100
+    default 50
+config ASSISTANT_AP_SSID
+    string "Configuration hotspot SSID"
+    default "LingASR-Assistant"
+config ASSISTANT_AP_PASSWORD
+    string "Configuration hotspot password (8 to 63 characters)"
+    default "lingasr1234"
+endmenu

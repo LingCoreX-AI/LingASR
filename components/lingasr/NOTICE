@@ -1,0 +1,14 @@
+LingASR Preview. Copyright (c) 2026 LingCoreX / 瓴枢智云（上海）科技有限公司.
+Public headers, application examples and build integration: MIT.
+Core ASR library and deployment resources: LingASR Preview License 1.0.
+Bundled LingTTS SDK 0.2.0-rc2: LingTTS Community License 1.0.
+
+The compiled ASR library includes:
+- ESP-NN by Espressif Systems: Apache License 2.0.
+- ESP-DSP by Espressif Systems: Apache License 2.0.
+- WebRTC VAD and its signal-processing dependencies: licenses/webrtc-vad.txt.
+The application LCD font is a subset of Noto Sans SC: SIL Open Font License 1.1.
+The bundled LingTTS component has additional ESP-NN, KissFFT and micro-ecc notices
+and complete license texts in components/lingtts/NOTICE and components/lingtts/licenses/.
+ESP-IDF firmware components retain their own licenses, supplied in the ESP-IDF
+v5.5.6 distribution. See docs/HARDWARE.md for the upstream source reference.
